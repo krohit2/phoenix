@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://34.61.250.237:5432/genai_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+gemini:
+  api-key: AIzaSyADhOc0_zBE0cEy75dO3Td9NnCyot7SNfY
+  endpoint: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent
+  build:
+    container_name: genai_springboot
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
